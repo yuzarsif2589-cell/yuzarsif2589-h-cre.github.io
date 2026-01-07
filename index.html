@@ -1,257 +1,778 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DSU Cosmetics</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSU Cosmetics</title>
+  <meta name="description" content="DSU Cosmetics — Serum, supplement ve krem ürünleri. Sepete ekle, siparişi WhatsApp ile tamamla." />
 
-<style>
-:root{
-  --green:#17b26a;
-  --green2:#0e8a52;
-  --bg:#ffffff;
-  --text:#0f1f18;
-  --muted:#5f746a;
-  --line:#dbe6df;
-  --soft:#ecfbf3;
-  --price:#6f7f77;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px 16px 120px;
-}
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:12px 16px;
-  background:#fff;
-  position:sticky;
-  top:12px;
-}
-.logo{
-  width:34px;height:34px;
-  background:linear-gradient(135deg,var(--green),var(--green2));
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  font-weight:bold;
-}
-.btn{
-  padding:10px 14px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:#fff;
-  cursor:pointer;
-  font-weight:bold;
-}
-.btn.primary{
-  background:linear-gradient(135deg,var(--green),var(--green2));
-  color:#fff;
-  border:none;
-}
-.hero{
-  margin-top:20px;
-  padding:28px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:#fff;
-}
-.hero h1{
-  margin:0 0 10px;
-  font-size:42px;
-}
-.hero p{color:var(--muted)}
-.products{
-  margin-top:24px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-.product{
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:18px;
-  background:#fff;
-}
-.badge{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:999px;
-  background:var(--soft);
-  color:var(--green2);
-  font-weight:bold;
-  font-size:12px;
-}
-.product h3{margin:10px 0 6px}
-.product p{color:var(--muted); font-size:14px}
-.product ul{color:var(--muted); font-size:13px}
-.price{
-  margin-top:10px;
-  font-weight:bold;
-  color:var(--price);
-}
-.rating{
-  margin-top:6px;
-  color:#f5a623;
-  font-size:14px;
-}
-.actions{
-  margin-top:12px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-.cartBtn{
-  position:fixed;
-  top:18px;
-  right:18px;
-  background:var(--green);
-  color:#fff;
-  padding:12px 16px;
-  border-radius:999px;
-  font-weight:bold;
-}
-.drawer{
-  position:fixed;
-  right:0;top:0;
-  width:360px;
-  height:100%;
-  background:#fff;
-  border-left:1px solid var(--line);
-  padding:16px;
-  display:none;
-}
-.drawer h3{margin-top:0}
-footer{
-  margin-top:24px;
-  padding:16px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  color:var(--muted);
-  font-size:13px;
-}
-@media(max-width:900px){
-  .products{grid-template-columns:1fr}
-}
-</style>
+  <style>
+    :root{
+      --green:#17b26a;
+      --green2:#0e8a52;
+
+      --bg:#ffffff;
+      --text:#0f1f18;
+      --muted:#5f746a;
+      --line:#dbe6df;
+      --soft:#ecfbf3;
+      --price:#6f7f77;
+
+      /* footer (ekrandaki gibi sıcak ton) */
+      --footerBg:#f6efe2;
+      --footerAccent:#ffbf66;
+      --shadow: 0 16px 40px rgba(10,40,25,.10);
+      --max:1100px;
+      --r:22px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 16px 90px;
+    }
+
+    /* Top nav */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:950;
+      letter-spacing:.3px;
+    }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:950;
+    }
+    .links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .links a{
+      color: var(--muted);
+      font-weight:900;
+      font-size:14px;
+    }
+    .links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+      font-weight:950;
+      gap:8px;
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color:#fff;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+      font-weight:950;
+      font-size:13px;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background:#fff;
+      box-shadow: var(--shadow);
+      padding:24px;
+    }
+    .hero h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .grad{
+      background: linear-gradient(135deg, var(--green2), var(--green));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-weight:750;
+      line-height:1.7;
+      max-width: 70ch;
+    }
+    .hero .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    /* Products */
+    .section{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background:#fff;
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .section h2{
+      margin:0 0 8px;
+      font-size:22px;
+    }
+    .section .sub{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-weight:750;
+      line-height:1.7;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:16px;
+      background:#fff;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .badge{
+      display:inline-flex;
+      align-self:flex-start;
+      padding:6px 10px;
+      border-radius:999px;
+      background: var(--soft);
+      color: var(--green2);
+      border:1px solid rgba(23,178,106,.22);
+      font-weight:950;
+      font-size:12px;
+    }
+    .card h3{
+      margin:0;
+      font-size:16px;
+      font-weight:950;
+    }
+    .desc{
+      margin:0;
+      color: var(--muted);
+      font-weight:750;
+      line-height:1.6;
+      font-size:13px;
+    }
+    ul.feat{
+      margin:0;
+      padding-left:18px;
+      color: var(--muted);
+      font-weight:750;
+      line-height:1.6;
+      font-size:13px;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:2px;
+    }
+    .priceTag{
+      display:inline-flex;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      color: var(--price);
+      font-weight:950;
+    }
+    .stars{
+      color:#f5a623;
+      font-weight:950;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .actions{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:4px;
+    }
+
+    /* Cart drawer */
+    .backdrop{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.35);
+      display:none;
+      z-index:40;
+    }
+    .drawer{
+      position:fixed;
+      top:0;
+      right:0;
+      height:100%;
+      width:min(420px, 92vw);
+      background:#fff;
+      border-left:1px solid var(--line);
+      box-shadow: -20px 0 45px rgba(0,0,0,.20);
+      transform: translateX(110%);
+      transition: .2s transform;
+      z-index:50;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{transform: translateX(0)}
+    .backdrop.show{display:block}
+    .dhead{
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .dhead b{font-weight:950}
+    .dclose{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .dbody{
+      padding:14px;
+      overflow:auto;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .item{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+    }
+    .item b{display:block}
+    .item span{color:var(--muted); font-weight:800; font-size:13px}
+    .qty{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .qbtn{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:950;
+      cursor:pointer;
+    }
+    .foot{
+      border-top:1px solid var(--line);
+      padding:12px 14px;
+      display:grid;
+      gap:10px;
+      background:#fff;
+    }
+    .sum{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-weight:950;
+    }
+    .sum small{color:var(--muted); font-weight:900}
+
+    /* Floating cart pill */
+    .cartFloat{
+      position:fixed;
+      top:18px;
+      right:18px;
+      z-index:60;
+      display:none;
+    }
+
+    /* Footer (like screenshot) */
+    .footer2{
+      margin-top:18px;
+      border-top:1px solid var(--line);
+      background: var(--footerBg);
+    }
+    .footerTop{
+      padding:22px 16px 10px;
+    }
+    .footerTopInner{
+      max-width: var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .footerTopText{
+      font-weight:850;
+      color:#2a2a2a;
+    }
+    .footerForm{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background: var(--footerAccent);
+      border:1px solid rgba(0,0,0,.15);
+      border-radius:999px;
+      padding:8px;
+    }
+    .footerForm input{
+      border:none;
+      outline:none;
+      background:transparent;
+      padding:10px 12px;
+      min-width:260px;
+      font-weight:850;
+    }
+    .footerForm button{
+      border:none;
+      cursor:pointer;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      background:#111;
+      color:#fff;
+      font-weight:950;
+    }
+    .footerMain{
+      padding:18px 16px 26px;
+    }
+    .footerGrid{
+      max-width: var(--max);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:22px;
+    }
+    .footerGrid h4{
+      margin:0 0 10px;
+      color:#111;
+      font-size:18px;
+    }
+    .footerGrid a{
+      display:block;
+      color:#2a2a2a;
+      opacity:.85;
+      font-weight:750;
+      padding:7px 0;
+    }
+    .footerGrid a:hover{opacity:1}
+    .footerGrid p{
+      margin:0 0 10px;
+      color:#2a2a2a;
+      line-height:1.7;
+    }
+    .fmut{opacity:.80; font-weight:750}
+    .footerCta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: var(--green);
+      color:#fff !important;
+      font-weight:950;
+      border:1px solid rgba(0,0,0,.12);
+    }
+    .footerBottom{
+      max-width: var(--max);
+      margin:14px auto 0;
+      padding-top:14px;
+      border-top:1px solid rgba(0,0,0,.12);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:#2a2a2a;
+      font-weight:850;
+    }
+
+    /* mobile */
+    @media (max-width: 900px){
+      .links{display:none}
+      .grid{grid-template-columns: 1fr}
+      .actions{grid-template-columns: 1fr}
+      .footerGrid{grid-template-columns: 1fr}
+      .footerForm input{min-width:200px}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo">D</div>
+        <div>DSU <span style="color:var(--muted); font-size:12px; font-weight:900; margin-left:6px;">Cosmetics</span></div>
+      </div>
 
-<div class="container">
+      <div class="links">
+        <a href="#urunler">Ürünler</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
 
-  <div class="nav">
-    <div style="display:flex;gap:10px;align-items:center">
-      <div class="logo">D</div>
-      <strong>DSU Cosmetics</strong>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="pill" id="cartPill">Sepet: 0 ürün • 0 TL</div>
+        <button class="btn primary" onclick="openCart()">Sepet</button>
+      </div>
     </div>
-    <button class="btn primary" onclick="openCart()">Sepet</button>
+
+    <div class="hero">
+      <h1><span class="grad">DSU Cosmetics</span><br/>Serum • Supplement • Krem</h1>
+      <p>
+        Ürünleri sepete ekleyin. Siparişinizi WhatsApp üzerinden hızlıca tamamlayın.
+        Tüm ürünler sabit fiyat: <b style="color:var(--price)">299 TL</b>.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#urunler">Ürünleri Gör</a>
+        <a class="btn" href="#iletisim">İletişim</a>
+      </div>
+    </div>
+
+    <div class="section" id="urunler">
+      <h2>Ürünler</h2>
+      <p class="sub">Kalite odaklı içerik yaklaşımı ve sade kullanım deneyimi.</p>
+
+      <div class="grid" id="productGrid"></div>
+    </div>
   </div>
 
-  <div class="hero">
-    <h1>DSU Cosmetics</h1>
-    <p>Modern, sade ve güvenilir cilt bakımı ürünleri.</p>
+  <!-- Cart drawer -->
+  <div class="backdrop" id="backdrop" onclick="closeCart()"></div>
+  <div class="drawer" id="drawer">
+    <div class="dhead">
+      <b>🛒 Sepet</b>
+      <button class="dclose" onclick="closeCart()">Kapat</button>
+    </div>
+
+    <div class="dbody" id="cartItems"></div>
+
+    <div class="foot">
+      <div class="sum">
+        <div>Toplam</div>
+        <div><small id="cartCount">0 ürün</small> • <span id="cartTotal">0 TL</span></div>
+      </div>
+      <button class="btn primary" onclick="completeOrder()">Siparişi Tamamla</button>
+      <button class="btn" onclick="clearCart()">Sepeti Boşalt</button>
+    </div>
   </div>
 
-  <div class="products" id="products"></div>
+  <!-- Footer (screenshot-like) -->
+  <footer class="footer2" id="iletisim">
+    <div class="footerTop">
+      <div class="footerTopInner">
+        <div class="footerTopText">Özel fırsatlar ve yenilikler için e-posta listemize katılın.</div>
+        <form class="footerForm" onsubmit="return subscribeEmail(event)">
+          <input id="subEmail" type="email" placeholder="Email" required />
+          <button type="submit" aria-label="Gönder">→</button>
+        </form>
+      </div>
+    </div>
 
-  <footer>
-    WhatsApp: +90 541 474 8772 <br>
-    E-posta: muhammetgulay1310@gmail.com
+    <div class="footerMain">
+      <div class="footerGrid">
+
+        <div>
+          <h4>Menü</h4>
+          <a href="#urunler">Ürünler</a>
+          <a href="#iletisim">İletişim</a>
+          <a href="#">Gizlilik Politikası</a>
+          <a href="#">Mesafeli Satış Sözleşmesi</a>
+          <a href="#">İade & Değişim</a>
+        </div>
+
+        <div>
+          <h4>Merkez Ofis</h4>
+          <p>
+            DSU Cosmetics<br>
+            <strong>Çatal Çeşme Mahallesi, 3549. Sk. No: 7/3</strong><br>
+            Merkez / Elazığ
+          </p>
+          <p class="fmut">
+            <strong>WhatsApp / Telefon:</strong> <a href="tel:+905414748772">+90 541 474 8772</a><br>
+            <strong>E-posta:</strong> <a href="mailto:muhammetgulay1310@gmail.com">muhammetgulay1310@gmail.com</a>
+          </p>
+        </div>
+
+        <div>
+          <h4>Marka</h4>
+          <p class="fmut">
+            DSU; serum, supplement ve krem kategorilerinde modern cilt bakım yaklaşımıyla ürünler sunar.
+            Siparişler WhatsApp üzerinden alınır ve hızlı bilgilendirme sağlanır.
+          </p>
+        </div>
+
+        <div>
+          <h4>Sözümüz</h4>
+          <p class="fmut">
+            Kalite, güven ve kolay alışveriş deneyimi. Her üründe şeffaf iletişim ve hızlı destek.
+          </p>
+          <a class="footerCta" target="_blank" rel="noopener"
+             href="https://wa.me/905414748772?text=Merhaba,%20DSU%20ürünleri%20hakkında%20bilgi%20almak%20istiyorum.">
+            WhatsApp’tan Yaz
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footerBottom">
+        <span>© <span id="year"></span> DSU Cosmetics. Tüm hakları saklıdır.</span>
+        <span class="fmut">Türkiye • Elazığ</span>
+      </div>
+    </div>
   </footer>
 
-</div>
+  <script>
+    // ---- Settings ----
+    const PRICE = 299;
+    const WHATSAPP = "905414748772";
 
-<div class="cartBtn" id="cartInfo">🛒 0 TL</div>
+    // ---- Products (no images) ----
+    const products = [
+      {
+        id:"urea-repair",
+        cat:"Krem",
+        name:"DSU Urea 40% Repair Cream",
+        desc:"Çok kuru ve çatlamaya meyilli ciltler için yoğun nem ve onarım desteği.",
+        feats:["%40 üre içerir","El/ayak/dirsek/topuk için uygun","Yoğun nem desteği"]
+      },
+      {
+        id:"urea-sa",
+        cat:"Krem",
+        name:"DSU Urea 40% + Salicylic Cream",
+        desc:"Pürüzlü cilt görünümünü azaltmaya yardımcı, yenileyici bakım kremi.",
+        feats:["%40 üre + salisilik asit","Daha pürüzsüz his hedefi","Yoğun yumuşatma desteği"]
+      },
+      {
+        id:"retinol",
+        cat:"Serum",
+        name:"DSU Retinol Serum",
+        desc:"Gece rutininde daha pürüzsüz bir görünüm hedefleyen bakım serumu.",
+        feats:["Gece kullanımına uygun","Daha canlı görünüm hedefi","Dengeli ve hafif yapı"]
+      },
+      {
+        id:"vitc",
+        cat:"Serum",
+        name:"DSU Vitamin C Serum",
+        desc:"Daha aydınlık ve canlı bir görünüm için günlük serum.",
+        feats:["Günlük kullanım için uygun","Ton eşitleme desteği","Canlı görünüm hedefi"]
+      },
+      {
+        id:"supplement",
+        cat:"Supplement",
+        name:"DSU Beauty Supplement",
+        desc:"Günlük bakım rutinini desteklemek için pratik takviye formu.",
+        feats:["Günlük rutine uygun","Kolay kullanım","Bakım desteği yaklaşımı"]
+      }
+    ];
 
-<div class="drawer" id="cart">
-  <h3>Sepet</h3>
-  <div id="cartItems"></div>
-  <p><strong>Toplam:</strong> <span id="total">0 TL</span></p>
-  <button class="btn primary" onclick="checkout()">Siparişi Tamamla</button>
-</div>
+    // ---- Cart ----
+    const cart = new Map();
 
-<script>
-const PRICE=299;
-const phone="905414748772";
-const products=[
-  {id:1,cat:"Krem",name:"DSU Urea 40% Repair Cream"},
-  {id:2,cat:"Krem",name:"DSU Urea 40% + Salicylic Cream"},
-  {id:3,cat:"Serum",name:"DSU Retinol Serum"},
-  {id:4,cat:"Serum",name:"DSU Vitamin C Serum"},
-  {id:5,cat:"Serum",name:"DSU AHA 30% + BHA 2% Serum"},
-];
-let cart={};
+    function money(n){ return `${n} TL`; }
 
-function render(){
-  const p=document.getElementById("products");
-  p.innerHTML="";
-  products.forEach(x=>{
-    p.innerHTML+=`
-    <div class="product">
-      <span class="badge">${x.cat}</span>
-      <h3>${x.name}</h3>
-      <p>Yüksek kalite standartlarında geliştirilmiş bakım ürünü.</p>
-      <ul>
-        <li>Düzenli kullanım için uygundur</li>
-        <li>Hafif ve dengeli yapı</li>
-        <li>DSU kalite anlayışı</li>
-      </ul>
-      <div class="price">299 TL</div>
-      <div class="rating">★★★★★ 4.7</div>
-      <div class="actions">
-        <button class="btn primary" onclick="add(${x.id})">Sepete Ekle</button>
-        <button class="btn" onclick="openCart()">Sepet</button>
-      </div>
-    </div>`;
-  });
-}
-function add(id){
-  cart[id]=(cart[id]||0)+1;
-  updateCart();
-}
-function updateCart(){
-  let total=0;
-  let html="";
-  for(let id in cart){
-    const p=products.find(x=>x.id==id);
-    const q=cart[id];
-    total+=q*PRICE;
-    html+=`<p>${p.name} × ${q}</p>`;
-  }
-  document.getElementById("cartItems").innerHTML=html||"Sepetiniz boş";
-  document.getElementById("total").innerText=total+" TL";
-  document.getElementById("cartInfo").innerText="🛒 "+total+" TL";
-}
-function openCart(){
-  document.getElementById("cart").style.display="block";
-}
-function checkout(){
-  let msg="Merhaba, DSU üzerinden sipariş vermek istiyorum.%0A";
-  let total=0;
-  for(let id in cart){
-    const p=products.find(x=>x.id==id);
-    const q=cart[id];
-    total+=q*PRICE;
-    msg+=`- ${p.name} x${q}%0A`;
-  }
-  msg+=`Toplam: ${total} TL`;
-  window.location.href=`https://wa.me/${phone}?text=${msg}`;
-}
-render();
-</script>
+    function totals(){
+      let count = 0, total = 0;
+      for (const [id, qty] of cart.entries()){
+        count += qty;
+        total += qty * PRICE;
+      }
+      return {count, total};
+    }
 
+    function updatePill(){
+      const {count, total} = totals();
+      const pill = document.getElementById("cartPill");
+      pill.textContent = `Sepet: ${count} ürün • ${money(total)}`;
+      document.getElementById("cartCount").textContent = `${count} ürün`;
+      document.getElementById("cartTotal").textContent = money(total);
+    }
+
+    function openCart(){
+      document.getElementById("backdrop").classList.add("show");
+      document.getElementById("drawer").classList.add("open");
+      renderCart();
+    }
+    function closeCart(){
+      document.getElementById("backdrop").classList.remove("show");
+      document.getElementById("drawer").classList.remove("open");
+    }
+
+    function addToCart(id){
+      cart.set(id, (cart.get(id) || 0) + 1);
+      updatePill();
+      renderCart();
+      openCart();
+    }
+    function dec(id){
+      const q = cart.get(id) || 0;
+      if (q <= 1) cart.delete(id);
+      else cart.set(id, q - 1);
+      updatePill();
+      renderCart();
+    }
+    function inc(id){
+      cart.set(id, (cart.get(id) || 0) + 1);
+      updatePill();
+      renderCart();
+    }
+    function clearCart(){
+      cart.clear();
+      updatePill();
+      renderCart();
+    }
+
+    function renderCart(){
+      const el = document.getElementById("cartItems");
+      el.innerHTML = "";
+
+      if (cart.size === 0){
+        el.innerHTML = `<div class="pill">Sepetiniz boş</div>`;
+        return;
+      }
+
+      for (const [id, qty] of cart.entries()){
+        const p = products.find(x => x.id === id);
+        const item = document.createElement("div");
+        item.className = "item";
+        item.innerHTML = `
+          <div>
+            <b>${p.name}</b>
+            <span>${p.cat} • ${money(PRICE)} / adet</span>
+          </div>
+          <div class="qty">
+            <button class="qbtn" onclick="dec('${id}')">-</button>
+            <div style="min-width:22px; text-align:center; font-weight:950;">${qty}</div>
+            <button class="qbtn" onclick="inc('${id}')">+</button>
+          </div>
+        `;
+        el.appendChild(item);
+      }
+      updatePill();
+    }
+
+    function completeOrder(){
+      const {count, total} = totals();
+      if (count === 0){ openCart(); return; }
+
+      let lines = [];
+      lines.push("Merhaba, DSU üzerinden sipariş vermek istiyorum.");
+      lines.push("");
+      lines.push("Sipariş:");
+      for (const [id, qty] of cart.entries()){
+        const p = products.find(x => x.id === id);
+        lines.push(`- ${p.name} x${qty} = ${money(qty*PRICE)}`);
+      }
+      lines.push("");
+      lines.push(`Toplam: ${money(total)}`);
+      lines.push("");
+      lines.push("Ad Soyad:");
+      lines.push("Telefon:");
+      lines.push("Adres:");
+
+      const msg = encodeURIComponent(lines.join("\n"));
+      window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener");
+    }
+
+    // Footer email: WhatsApp'a iletir (veri kaybı olmaz, tek tık)
+    function subscribeEmail(e){
+      e.preventDefault();
+      const email = document.getElementById("subEmail").value.trim();
+      if(!email) return false;
+      const msg = encodeURIComponent("Merhaba, e-posta listesine eklenmek istiyorum: " + email);
+      window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener");
+      document.getElementById("subEmail").value = "";
+      return false;
+    }
+
+    // Render products
+    function renderProducts(){
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = "";
+
+      products.forEach((p, i) => {
+        const stars = ["★★★★★ 4.8","★★★★★ 4.7","★★★★★ 4.9","★★★★★ 4.8","★★★★★ 4.7"][i] || "★★★★★ 4.8";
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <span class="badge">${p.cat}</span>
+          <h3>${p.name}</h3>
+          <p class="desc">${p.desc}</p>
+          <ul class="feat">${p.feats.map(x => `<li>${x}</li>`).join("")}</ul>
+          <div class="row">
+            <div class="priceTag">${money(PRICE)}</div>
+            <div class="stars">${stars}</div>
+          </div>
+          <div class="actions">
+            <button class="btn primary" onclick="addToCart('${p.id}')">Sepete Ekle</button>
+            <button class="btn" onclick="openCart()">Sepet</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // init
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderProducts();
+    updatePill();
+  </script>
 </body>
 </html>
