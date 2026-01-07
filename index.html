@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DSU Cosmetics | Doğal Güzellik</title>
-  <meta name="description" content="DSU Cosmetics — temiz içerik, etkili formüller. Cilt bakımında güvenilir, modern kozmetik."/>
+  <title>DSU Cosmetics | Turkuaz Dokunuş</title>
+  <meta name="description" content="DSU Cosmetics — Serum, takviye (supplement) ve krem ürünleriyle modern bakım. Şeffaf iletişim, premium deneyim."/>
   <style>
     :root{
-      --bg:#0b0b0f;
-      --card:#12121a;
-      --text:#f4f4f7;
-      --muted:#b9b9c6;
+      --bg:#071012;
+      --card:#0c1a1d;
+      --text:#f2fbfb;
+      --muted:#a9c8c9;
       --line:rgba(255,255,255,.10);
-      --accent:#ff4fd8;
-      --accent2:#7c4dff;
-      --ok:#38d39f;
+
+      /* Turkuaz tema */
+      --accent:#19d3d1;
+      --accent2:#2aa7ff;
+
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
       --radius2:28px;
@@ -24,12 +26,12 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(255,79,216,.22), transparent 60%),
-        radial-gradient(900px 500px at 85% 20%, rgba(124,77,255,.20), transparent 55%),
-        radial-gradient(800px 500px at 50% 95%, rgba(56,211,159,.12), transparent 55%),
+        radial-gradient(900px 500px at 15% 10%, rgba(25,211,209,.22), transparent 60%),
+        radial-gradient(900px 500px at 85% 20%, rgba(42,167,255,.18), transparent 55%),
+        radial-gradient(800px 500px at 50% 95%, rgba(25,211,209,.10), transparent 55%),
         var(--bg);
     }
     a{color:inherit; text-decoration:none}
@@ -38,7 +40,7 @@
       display:flex; align-items:center; justify-content:space-between;
       gap:14px; padding:14px 16px;
       border:1px solid var(--line); border-radius:999px;
-      background: rgba(18,18,26,.55);
+      background: rgba(12,26,29,.55);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       position: sticky; top:14px; z-index:10;
@@ -47,8 +49,9 @@
     .logo{
       width:34px; height:34px; border-radius:12px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 10px 25px rgba(255,79,216,.18);
+      box-shadow: 0 10px 25px rgba(25,211,209,.18);
       display:grid; place-items:center; font-weight:900;
+      color:#062021;
     }
     .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
     .links a{color:var(--muted); font-weight:600; font-size:14px}
@@ -62,12 +65,14 @@
       font-weight:700; font-size:14px;
       transition:.2s transform, .2s background, .2s border;
       gap:10px;
+      cursor:pointer;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.26)}
     .btn.primary{
       border:none;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 12px 28px rgba(124,77,255,.22);
+      color:#062021;
+      box-shadow: 0 12px 28px rgba(42,167,255,.18);
     }
     .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
     .hero{
@@ -79,7 +84,7 @@
     .card{
       border:1px solid var(--line);
       border-radius: var(--radius2);
-      background: rgba(18,18,26,.55);
+      background: rgba(12,26,29,.55);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
@@ -92,7 +97,7 @@
       color:var(--muted);
       font-weight:700; font-size:13px;
     }
-    .dot{width:9px; height:9px; border-radius:50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(56,211,159,.16)}
+    .dot{width:9px; height:9px; border-radius:50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(25,211,209,.14)}
     h1{
       margin:14px 0 10px;
       font-size: clamp(32px, 4.2vw, 54px);
@@ -100,7 +105,7 @@
       letter-spacing: -0.8px;
     }
     .grad{
-      background: linear-gradient(135deg, #fff, rgba(255,255,255,.75), rgba(255,79,216,.90));
+      background: linear-gradient(135deg, #fff, rgba(255,255,255,.78), rgba(25,211,209,.95));
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
     .sub{
@@ -127,8 +132,8 @@
       padding:18px;
       border:1px dashed rgba(255,255,255,.18);
       background:
-        radial-gradient(240px 160px at 70% 30%, rgba(255,79,216,.25), transparent 70%),
-        radial-gradient(240px 160px at 35% 55%, rgba(124,77,255,.25), transparent 70%),
+        radial-gradient(240px 160px at 70% 30%, rgba(25,211,209,.22), transparent 70%),
+        radial-gradient(240px 160px at 35% 55%, rgba(42,167,255,.20), transparent 70%),
         rgba(255,255,255,.04);
       height: 100%;
       display:flex; flex-direction:column; justify-content:space-between;
@@ -140,14 +145,13 @@
     .stat{
       border-radius: var(--radius);
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(18,18,26,.55);
+      background: rgba(12,26,29,.55);
       padding:12px;
     }
     .stat b{display:block; font-size:18px}
     .stat span{color:var(--muted); font-size:12px; font-weight:600}
     section{margin-top:18px}
     .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
-    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px}
     .pad{padding:22px}
     h2{margin:0 0 10px; font-size:22px}
     .muted{color:var(--muted); line-height:1.7; margin:0}
@@ -159,7 +163,7 @@
     .feature b{display:block; margin-bottom:6px}
     .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
     .tag{
-      font-size:12px; font-weight:700; color:rgba(255,255,255,.88);
+      font-size:12px; font-weight:700; color:rgba(255,255,255,.90);
       padding:7px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
@@ -168,31 +172,20 @@
     .product{
       padding:18px; border-radius: var(--radius2);
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(18,18,26,.45);
+      background: rgba(12,26,29,.45);
     }
     .badge{
       display:inline-flex; padding:6px 10px; border-radius:999px;
-      background: rgba(255,79,216,.14);
-      border:1px solid rgba(255,79,216,.22);
+      background: rgba(25,211,209,.14);
+      border:1px solid rgba(25,211,209,.24);
       font-size:12px; font-weight:800;
+      color:rgba(255,255,255,.92);
     }
     .product h3{margin:10px 0 6px; font-size:16px}
     .product p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
     .contact{
       display:flex; gap:12px; flex-wrap:wrap; margin-top:14px
     }
-    input, textarea{
-      width:100%;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-      padding:12px 12px;
-      outline:none;
-      font-size:14px;
-    }
-    textarea{min-height: 110px; resize: vertical}
-    .formgrid{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
     .foot{
       margin-top:18px;
       padding:16px 18px;
@@ -209,8 +202,6 @@
       .hero{grid-template-columns: 1fr; }
       .products{grid-template-columns: 1fr; }
       .grid3{grid-template-columns: 1fr; }
-      .grid2{grid-template-columns: 1fr; }
-      .formgrid{grid-template-columns: 1fr; }
       .links{display:none}
     }
   </style>
@@ -226,7 +217,6 @@
       <div class="links">
         <a href="#urunler">Ürünler</a>
         <a href="#hakkinda">Hakkında</a>
-        <a href="#icerik">İçerik</a>
         <a href="#iletisim">İletişim</a>
       </div>
 
@@ -238,67 +228,69 @@
 
     <div class="hero">
       <div class="card hero-left">
-        <div class="kicker"><span class="dot"></span> Temiz içerik • Etkili formüller • Modern kozmetik</div>
-        <h1><span class="grad">DSU Cosmetics</span><br/>Cildin için nazik, sonuç için güçlü.</h1>
+        <div class="kicker"><span class="dot"></span> Serum • Takviye • Krem — modern DSU bakımı</div>
+        <h1><span class="grad">DSU Cosmetics</span><br/>Turkuaz dokunuşla temiz güzellik.</h1>
         <p class="sub">
-          DSU; günlük cilt bakımı rutinini sadeleştiren, içerik odaklı ve yüksek performanslı kozmetik ürünleri geliştirir.
-          Şeffaf, güvenilir ve premium bir deneyim hedefler.
+          DSU; serum, takviye (supplement) ve krem kategorilerinde modern, sade ve güvenilir ürünler sunar.
+          Amacımız: günlük rutini kolaylaştıran, premium bir bakım deneyimi.
         </p>
 
         <div class="cta">
-          <a class="btn primary" href="#iletisim">Sipariş / Bayilik Bilgisi</a>
+          <a class="btn primary" href="#iletisim">İletişime Geç</a>
           <a class="btn" href="#hakkinda">Markayı Tanı</a>
         </div>
 
         <div class="meta">
-          <div class="pill">✔ Dermatolojik yaklaşım</div>
-          <div class="pill">✔ Günlük kullanım odaklı</div>
-          <div class="pill">✔ Şık & minimal tasarım</div>
+          <div class="pill">✔ Şeffaf yaklaşım</div>
+          <div class="pill">✔ Günlük kullanım</div>
+          <div class="pill">✔ Premium tasarım</div>
         </div>
       </div>
 
       <div class="card hero-right">
         <div class="mock">
           <div>
-            <h3>Yeni Çıkış: “Glow & Calm” Serisi</h3>
+            <h3>DSU Serileri</h3>
             <p>
-              Nem, bariyer desteği ve aydınlık görünüm için tasarlandı. DSU ile daha dengeli bir cilt hissi.
+              Ürün koleksiyonları “Serum”, “Takviye” ve “Krem” olarak sade biçimde sunulur.
+              Ürün detaylarını eklediğinde sayfa daha da güçlü görünecek.
             </p>
             <div class="statgrid">
-              <div class="stat"><b>3 Adım</b><span>Temizle • Nemlendir • Koru</span></div>
-              <div class="stat"><b>Minimal</b><span>Gereksiz karmaşa yok</span></div>
-              <div class="stat"><b>Premium</b><span>Kalite odaklı üretim</span></div>
-              <div class="stat"><b>Şeffaf</b><span>Net mesaj, net ürün</span></div>
+              <div class="stat"><b>Serum</b><span>Hedefe yönelik bakım</span></div>
+              <div class="stat"><b>Takviye</b><span>İçten destek yaklaşımı</span></div>
+              <div class="stat"><b>Krem</b><span>Nem & bariyer</span></div>
+              <div class="stat"><b>DSU</b><span>Modern turkuaz kimlik</span></div>
             </div>
           </div>
           <div class="tags">
-            <span class="tag">Cilt Bakımı</span>
             <span class="tag">Kozmetik</span>
-            <span class="tag">DSU</span>
+            <span class="tag">Cilt Bakımı</span>
+            <span class="tag">Turkuaz</span>
           </div>
         </div>
       </div>
     </div>
 
     <section id="urunler" class="card pad">
-      <h2>Öne Çıkan Ürünler</h2>
-      <p class="muted">Şimdilik yer tutucu içerik. Ürün isimlerini ve kısa açıklamaları senin ürünlerine göre düzenleriz.</p>
+      <h2>Ürün Kategorileri</h2>
+      <p class="muted">Bu alanı gerçek ürün isimlerin ve kısa açıklamalarınla doldurabiliriz.</p>
       <div style="height:12px"></div>
+
       <div class="products">
         <div class="product">
-          <span class="badge">Cilt Bakımı</span>
-          <h3>DSU Gentle Cleanser</h3>
-          <p>Günlük kullanıma uygun, cildi yormayan temizleme deneyimi.</p>
+          <span class="badge">Serum</span>
+          <h3>DSU Serum Serisi</h3>
+          <p>Hedefe yönelik içeriklerle günlük rutinde pratik kullanım.</p>
         </div>
         <div class="product">
-          <span class="badge">Nem & Bariyer</span>
-          <h3>DSU Barrier Moisturizer</h3>
-          <p>Nem dengesini destekleyen, konforlu ve hafif bir formül.</p>
+          <span class="badge">Takviye (Supplement)</span>
+          <h3>DSU Supplement Serisi</h3>
+          <p>İçten destek yaklaşımıyla tamamlayıcı bakım kategorisi.</p>
         </div>
         <div class="product">
-          <span class="badge">SPF</span>
-          <h3>DSU Daily SPF</h3>
-          <p>Günlük koruma için pratik kullanım ve temiz bitiş.</p>
+          <span class="badge">Krem</span>
+          <h3>DSU Krem Serisi</h3>
+          <p>Nem, bariyer ve konfor odaklı formül yaklaşımı.</p>
         </div>
       </div>
     </section>
@@ -306,72 +298,55 @@
     <section class="grid3">
       <div class="card feature">
         <b>Marka vaadi</b>
-        <div class="muted">Sade rutin, güçlü sonuç. DSU, gereksiz adımları azaltır.</div>
+        <div class="muted">Sade rutin, güçlü sonuç. DSU, karmaşayı azaltır.</div>
       </div>
       <div class="card feature">
-        <b>Kalite yaklaşımı</b>
-        <div class="muted">Şeffaf içerik iletişimi ve tutarlı ürün deneyimi.</div>
+        <b>Kimlik</b>
+        <div class="muted">Turkuaz tonlar, modern ve güven veren bir görünüm.</div>
       </div>
       <div class="card feature">
-        <b>Topluluk</b>
-        <div class="muted">Kullanıcı geri bildirimleriyle ürünleri iteratif geliştirme.</div>
+        <b>Deneyim</b>
+        <div class="muted">Kullanıcı odaklı, anlaşılır ve premium sunum.</div>
       </div>
     </section>
 
     <section id="hakkinda" class="card pad">
       <h2>DSU Hakkında</h2>
       <p class="muted">
-        DSU Cosmetics; modern kozmetiği “temiz, anlaşılır ve erişilebilir” bir çerçevede sunmayı hedefler.
-        Marka hikayesi, üretim ülkesi/şehri, vizyon-misyon gibi bilgileri buraya ekleyebiliriz.
+        DSU Cosmetics, serum, takviye ve krem kategorilerinde modern bir bakım deneyimi sunmak için yola çıktı.
+        Buraya marka hikayeni (kuruluş yılı, vizyon, üretim yeri) ekleyebiliriz.
       </p>
       <div class="tags">
-        <span class="tag">Minimal</span>
+        <span class="tag">Modern</span>
         <span class="tag">Premium</span>
         <span class="tag">Şeffaf</span>
-        <span class="tag">Modern</span>
-      </div>
-    </section>
-
-    <section id="icerik" class="grid2">
-      <div class="card pad">
-        <h2>İçerik & Blog (opsiyonel)</h2>
-        <p class="muted">
-          “Cilt bariyeri nedir?”, “SPF neden önemli?” gibi içerikler SEO için çok değerli.
-          İstersen burada son yazıları listeleriz (statik olarak).
-        </p>
-      </div>
-      <div class="card pad">
-        <h2>Sık Sorulan Sorular</h2>
-        <p class="muted">
-          Ürün kullanımı, iade, kargo, alerji uyarıları gibi bölümler eklenebilir.
-        </p>
       </div>
     </section>
 
     <section id="iletisim" class="card pad">
       <h2>İletişim</h2>
-      <p class="muted">Aşağıdaki form örnektir. GitHub Pages statik olduğu için “mail gönderme” için ekstra servis gerekir. Şimdilik WhatsApp/Instagram/e-posta linki ile çözeriz.</p>
-
-      <div style="height:12px"></div>
+      <p class="muted">Bize aşağıdaki kanallardan ulaşabilirsiniz.</p>
 
       <div class="contact">
-        <a class="btn" href="mailto:info@dsu.com">E-posta</a>
-        <a class="btn" href="#" onclick="alert('Instagram linkini buraya ekleyebiliriz.'); return false;">Instagram</a>
-        <a class="btn" href="#" onclick="alert('WhatsApp linkini buraya ekleyebiliriz.'); return false;">WhatsApp</a>
+        <a class="btn primary" href="https://wa.me/905414748772" target="_blank" rel="noopener">
+          WhatsApp’tan Yaz
+        </a>
+        <a class="btn" href="tel:+905414748772">
+          Telefon
+        </a>
+        <a class="btn" href="mailto:muhammetgulay1310@gmail.com">
+          E-posta
+        </a>
       </div>
 
       <div style="height:14px"></div>
 
-      <div class="formgrid">
-        <div><input placeholder="Ad Soyad" /></div>
-        <div><input placeholder="E-posta" /></div>
+      <div class="card" style="padding:16px; border-radius:18px; background: rgba(255,255,255,.04);">
+        <div style="display:grid; gap:6px;">
+          <div><strong>WhatsApp / Telefon:</strong> +90 541 474 8772</div>
+          <div><strong>E-posta:</strong> muhammetgulay1310@gmail.com</div>
+        </div>
       </div>
-      <div style="height:10px"></div>
-      <textarea placeholder="Mesajın"></textarea>
-      <div style="height:10px"></div>
-      <button class="btn primary" type="button" onclick="alert('Bu form şu an örnek. İstersen ücretsiz form servisi bağlarız.');">
-        Mesaj Gönder (Demo)
-      </button>
     </section>
 
     <div class="card foot">
