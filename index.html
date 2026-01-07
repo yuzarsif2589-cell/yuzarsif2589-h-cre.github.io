@@ -3,434 +3,825 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DSU Cosmetics | Turkuaz Dokunuş</title>
-  <meta name="description" content="DSU Cosmetics — modern cilt bakımı. Serum ve krem ürünleriyle premium deneyim. WhatsApp üzerinden sipariş."/>
+  <title>DSU Cosmetics</title>
+  <meta name="description" content="DSU Cosmetics — Yeşil & beyaz tema. Sepete ekle, satın al, ödeme adımına kadar ilerle ve WhatsApp ile siparişi tamamla."/>
   <style>
     :root{
-      --bg:#071012;
-      --card:#0c1a1d;
-      --text:#f2fbfb;
-      --muted:#a9c8c9;
-      --line:rgba(255,255,255,.10);
+      --bg:#ffffff;
+      --card:#ffffff;
+      --text:#0b1b14;
+      --muted:#4a6b5d;
+      --line:rgba(10,40,25,.14);
 
-      /* Turkuaz tema */
-      --accent:#19d3d1;
-      --accent2:#2aa7ff;
+      --accent:#17b26a;  /* yeşil */
+      --accent2:#0e8a52; /* koyu yeşil */
+      --soft:#e9fff4;
 
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --radius2:28px;
+      --shadow: 0 14px 40px rgba(10,40,25,.10);
+      --r1:16px;
+      --r2:22px;
       --max:1100px;
 
-      /* fiyat rengi (gri) */
-      --price:#98a7aa;
+      --price:#5f6f67;   /* gri fiyat */
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(25,211,209,.22), transparent 60%),
-        radial-gradient(900px 500px at 85% 20%, rgba(42,167,255,.18), transparent 55%),
-        radial-gradient(800px 500px at 50% 95%, rgba(25,211,209,.10), transparent 55%),
+        radial-gradient(900px 520px at 18% 0%, rgba(23,178,106,.10), transparent 60%),
+        radial-gradient(900px 520px at 85% 15%, rgba(23,178,106,.08), transparent 60%),
         var(--bg);
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 90px}
+
+    /* Top bar */
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:14px 16px;
+      gap:12px; padding:12px 14px;
       border:1px solid var(--line); border-radius:999px;
-      background: rgba(12,26,29,.55);
+      background: rgba(255,255,255,.85);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
-      position: sticky; top:14px; z-index:10;
+      position: sticky; top:14px; z-index:20;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.4px}
     .logo{
       width:34px; height:34px; border-radius:12px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 10px 25px rgba(25,211,209,.18);
-      display:grid; place-items:center; font-weight:900;
-      color:#062021;
+      display:grid; place-items:center; font-weight:950; color:#fff;
+      box-shadow: 0 10px 25px rgba(23,178,106,.22);
     }
-    .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-    .links a{color:var(--muted); font-weight:600; font-size:14px}
+    .links{display:flex; gap:14px; flex-wrap:wrap}
+    .links a{color:var(--muted); font-weight:800; font-size:14px}
     .links a:hover{color:var(--text)}
+    .actions{display:flex; gap:10px; align-items:center}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:11px 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      background: #fff;
       color:var(--text);
-      font-weight:800; font-size:14px;
-      transition:.2s transform, .2s background, .2s border;
-      gap:10px;
+      font-weight:900; font-size:14px;
       cursor:pointer;
+      transition:.15s transform, .15s box-shadow;
+      gap:10px;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.26)}
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 22px rgba(10,40,25,.08)}
     .btn.primary{
       border:none;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#062021;
-      box-shadow: 0 12px 28px rgba(42,167,255,.18);
-    }
-    .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
-    .hero{
-      display:grid; gap:22px;
-      grid-template-columns: 1.2fr .8fr;
-      align-items:stretch;
-      margin-top:18px;
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      background: rgba(12,26,29,.55);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-    }
-    .hero-left{padding:34px 28px}
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:var(--muted);
-      font-weight:700; font-size:13px;
-    }
-    .dot{width:9px; height:9px; border-radius:50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(25,211,209,.14)}
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(32px, 4.2vw, 54px);
-      line-height: 1.05;
-      letter-spacing: -0.8px;
-    }
-    .grad{
-      background: linear-gradient(135deg, #fff, rgba(255,255,255,.78), rgba(25,211,209,.95));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.6;
-      max-width: 62ch;
-    }
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
-    .meta{
-      display:flex; gap:14px; flex-wrap:wrap;
-      margin-top:18px; color:var(--muted); font-weight:600; font-size:13px;
+      color:#fff;
     }
     .pill{
       display:inline-flex; gap:8px; align-items:center;
       padding:8px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+      font-weight:900; font-size:13px;
     }
-    .hero-right{padding:22px}
-    .mock{
-      border-radius: var(--radius2);
-      padding:18px;
-      border:1px dashed rgba(255,255,255,.18);
-      background:
-        radial-gradient(240px 160px at 70% 30%, rgba(25,211,209,.22), transparent 70%),
-        radial-gradient(240px 160px at 35% 55%, rgba(42,167,255,.20), transparent 70%),
-        rgba(255,255,255,.04);
-      height: 100%;
-      display:flex; flex-direction:column; justify-content:space-between;
-      min-height: 290px;
-    }
-    .mock h3{margin:0 0 8px; font-size:16px}
-    .mock p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
-    .statgrid{display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; margin-top:14px}
-    .stat{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(12,26,29,.55);
-      padding:12px;
-    }
-    .stat b{display:block; font-size:18px}
-    .stat span{color:var(--muted); font-size:12px; font-weight:600}
-    section{margin-top:18px}
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
-    .pad{padding:22px}
-    h2{margin:0 0 10px; font-size:22px}
-    .muted{color:var(--muted); line-height:1.7; margin:0}
-    .feature{
-      padding:18px; border-radius: var(--radius2);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-    }
-    .feature b{display:block; margin-bottom:6px}
 
-    /* ürünler */
-    .products{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .pad{padding:22px}
+    h1{
+      margin:10px 0 10px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height:1.05;
+      letter-spacing:-0.6px;
+    }
+    .grad{
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .sub{margin:0; color:var(--muted); line-height:1.7; font-weight:700}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    .stats{display:grid; grid-template-columns: repeat(2,1fr); gap:10px; margin-top:12px}
+    .stat{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background: #fff;
+    }
+    .stat b{display:block; font-size:16px}
+    .stat span{display:block; margin-top:4px; color:var(--muted); font-weight:800; font-size:12px}
+
+    /* Products */
+    section{margin-top:16px}
+    h2{margin:0 0 8px; font-size:22px}
+    .muted{color:var(--muted); font-weight:700; line-height:1.7; margin:0}
+
+    .products{display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:12px}
     .product{
-      padding:18px; border-radius: var(--radius2);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(12,26,29,.45);
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      background:#fff;
+      padding:16px;
+      box-shadow: 0 10px 28px rgba(10,40,25,.06);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
     }
     .badge{
-      display:inline-flex; padding:6px 10px; border-radius:999px;
-      background: rgba(25,211,209,.14);
-      border:1px solid rgba(25,211,209,.24);
-      font-size:12px; font-weight:900;
-      color:rgba(255,255,255,.92);
-    }
-    .product h3{margin:10px 0 8px; font-size:16px}
-    .product p{margin:0 0 10px; color:var(--muted); font-size:13px; line-height:1.6}
-    .product ul{margin:0 0 12px 18px; padding:0; color:var(--muted); font-size:13px; line-height:1.6}
-    .price{
       display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-weight:900;
-      color:var(--price);
-      letter-spacing:.2px;
-      margin-top:2px;
-    }
-    .price .tag{
-      font-size:12px;
-      font-weight:900;
+      align-self:flex-start;
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color:var(--price);
+      background: var(--soft);
+      border:1px solid rgba(23,178,106,.25);
+      color: var(--accent2);
+      font-size:12px;
+      font-weight:950;
+    }
+    .pimg{
+      width:100%;
+      height:210px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      object-fit: cover;
+      background: #f7faf8;
+    }
+    .ptitle{margin:0; font-size:16px; font-weight:950}
+    .pdesc{margin:0; color:var(--muted); font-weight:750; line-height:1.6; font-size:13px}
+
+    .features{margin:0; padding-left:18px; color:var(--muted); font-weight:750; line-height:1.6; font-size:13px}
+    .priceRow{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-top:2px;
+    }
+    .priceTag{
+      display:inline-flex;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: #fff;
+      color: var(--price);
+      font-weight:950;
+    }
+    .rating{
+      display:flex; align-items:center; gap:8px;
+      color: var(--muted);
+      font-weight:900;
+      font-size:13px;
+    }
+    .stars{letter-spacing:1px; color: var(--accent2)}
+    .pbtns{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:4px}
+    .btn.full{width:100%}
+
+    .linkLike{
+      background: transparent;
+      border:1px dashed rgba(23,178,106,.35);
+      color: var(--accent2);
     }
 
-    .contact{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
-    .foot{
-      margin-top:18px;
-      padding:16px 18px;
-      color:var(--muted);
-      font-size:13px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
+    /* Cart Drawer */
+    .drawerBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.35);
+      display:none;
+      z-index:50;
     }
-    .small{font-size:12px; color:var(--muted)}
+    .drawer{
+      position:fixed;
+      top:0; right:0;
+      height:100%;
+      width:min(440px, 92vw);
+      background:#fff;
+      border-left:1px solid var(--line);
+      box-shadow: -20px 0 45px rgba(0,0,0,.20);
+      transform: translateX(110%);
+      transition: .2s transform;
+      z-index:60;
+      display:flex; flex-direction:column;
+    }
+    .drawer.open{transform: translateX(0)}
+    .drawerBack.show{display:block}
+    .dhead{
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .dtitle{font-weight:950}
+    .dclose{border:1px solid var(--line); background:#fff; border-radius:10px; padding:8px 10px; cursor:pointer; font-weight:900}
+    .dbody{padding:14px; overflow:auto; display:flex; flex-direction:column; gap:10px}
+    .item{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:#fff;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+    }
+    .item b{display:block}
+    .item span{color:var(--muted); font-weight:800; font-size:13px}
+    .qtyRow{display:flex; gap:8px; align-items:center; justify-content:flex-end}
+    .qbtn{
+      width:34px; height:34px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:950;
+      cursor:pointer;
+    }
+    .footBar{
+      border-top:1px solid var(--line);
+      padding:12px 14px;
+      display:grid;
+      gap:10px;
+      background:#fff;
+    }
+    .sumRow{display:flex; align-items:center; justify-content:space-between; font-weight:950}
+    .sumRow small{color:var(--muted); font-weight:900}
+
+    /* Checkout modal (mock payment step) */
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.40);
+      display:none;
+      z-index:80;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+    }
+    .modal{
+      width:min(760px, 96vw);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .mhead{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+    }
+    .mbody{padding:16px}
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    label{display:block; font-weight:950; margin-bottom:6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      outline:none;
+      font-weight:800;
+      color:var(--text);
+      background:#fff;
+    }
+    textarea{min-height:92px; resize:vertical}
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border:1px solid rgba(23,178,106,.25);
+      background: var(--soft);
+      border-radius:14px;
+      color: var(--muted);
+      font-weight:800;
+      line-height:1.6;
+      font-size:13px;
+    }
+    .mfoot{
+      padding:14px 16px;
+      border-top:1px solid var(--line);
+      display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;
+      background:#fff;
+    }
+
+    /* Reviews */
+    details{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:10px 12px;
+      background:#fff;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:950;
+      color: var(--accent2);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .reviews{
+      margin-top:10px;
+      display:grid;
+      gap:10px;
+    }
+    .rev{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fff;
+    }
+    .revTop{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .revName{font-weight:950}
+    .revMeta{color:var(--muted); font-weight:900; font-size:12px}
+    .revText{margin:8px 0 0; color:var(--muted); font-weight:800; line-height:1.6; font-size:13px}
+
+    /* Footer */
+    .footer{
+      margin-top:16px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      background:#fff;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+
     @media (max-width: 920px){
-      .hero{grid-template-columns: 1fr; }
-      .products{grid-template-columns: 1fr; }
-      .grid3{grid-template-columns: 1fr; }
+      .hero{grid-template-columns: 1fr}
+      .products{grid-template-columns: 1fr}
       .links{display:none}
+      .pbtns{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+
     <div class="nav">
       <div class="brand">
         <div class="logo">D</div>
-        <div>DSU <span class="small">Cosmetics</span></div>
+        <div>DSU <span style="color:var(--muted); font-weight:900; font-size:12px; margin-left:6px;">Cosmetics</span></div>
       </div>
 
       <div class="links">
         <a href="#urunler">Ürünler</a>
-        <a href="#hakkinda">Hakkında</a>
         <a href="#iletisim">İletişim</a>
       </div>
 
-      <div style="display:flex; gap:10px;">
-        <a class="btn" href="#iletisim">İletişim</a>
-        <a class="btn primary" href="#urunler">Koleksiyonu Gör</a>
+      <div class="actions">
+        <div class="pill" id="cartPill">Sepet: 0 ürün • 0 TL</div>
+        <button class="btn primary" onclick="openCart()">Sepeti Aç</button>
       </div>
     </div>
 
     <div class="hero">
-      <div class="card hero-left">
-        <div class="kicker"><span class="dot"></span> Serum • Krem — modern DSU bakımı</div>
-        <h1><span class="grad">DSU Cosmetics</span><br/>Turkuaz dokunuşla temiz güzellik.</h1>
+      <div class="card pad">
+        <div class="pill">Yeşil & Beyaz • Minimal • Hızlı Sipariş</div>
+        <h1><span class="grad">DSU Cosmetics</span><br/>Modern bakım, sade deneyim.</h1>
         <p class="sub">
-          DSU; modern, sade ve güvenilir bakım ürünleri sunar. WhatsApp üzerinden hızlı sipariş ve destek.
+          Ürünleri sepete ekle, “Satın Al” ile ödeme adımına kadar ilerle ve siparişi WhatsApp üzerinden tamamla.
         </p>
-
         <div class="cta">
-          <a class="btn primary" href="https://wa.me/905414748772?text=Merhaba,%20DSU%20ürünleri%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp’tan Yaz</a>
-          <a class="btn" href="#urunler">Ürünleri Gör</a>
-        </div>
-
-        <div class="meta">
-          <div class="pill">✔ Şeffaf yaklaşım</div>
-          <div class="pill">✔ Günlük kullanım</div>
-          <div class="pill">✔ Premium tasarım</div>
+          <a class="btn primary" href="#urunler">Ürünleri Gör</a>
+          <a class="btn" href="#iletisim">İletişim</a>
         </div>
       </div>
 
-      <div class="card hero-right">
-        <div class="mock">
-          <div>
-            <h3>DSU Serileri</h3>
-            <p>Onarım & nem, aydınlatma ve yenileyici bakım odaklı ürün seçkisi.</p>
-            <div class="statgrid">
-              <div class="stat"><b>Nem</b><span>Yoğun destek</span></div>
-              <div class="stat"><b>Onarım</b><span>Bariyer odağı</span></div>
-              <div class="stat"><b>Aydınlık</b><span>Canlı görünüm</span></div>
-              <div class="stat"><b>Peeling</b><span>Arındırma</span></div>
-            </div>
-          </div>
-          <div class="tags" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
-            <span class="pill">Kozmetik</span>
-            <span class="pill">Cilt Bakımı</span>
-            <span class="pill">Turkuaz</span>
-          </div>
+      <div class="card pad">
+        <h2 style="margin:0 0 8px;">Hızlı Bilgi</h2>
+        <p class="muted" style="margin:0;">Tüm ürünler sabit fiyat: <b style="color:var(--price)">299 TL</b></p>
+        <div class="stats">
+          <div class="stat"><b>Sepet</b><span>Çoklu ürün • adet kontrolü</span></div>
+          <div class="stat"><b>Ödeme</b><span>Demo “ödeme adımı” + WhatsApp</span></div>
+          <div class="stat"><b>Yorum</b><span>Her üründe 25 örnek değerlendirme</span></div>
+          <div class="stat"><b>Tema</b><span>Yeşil & beyaz kimlik</span></div>
         </div>
       </div>
     </div>
 
     <section id="urunler" class="card pad">
       <h2>Ürünler</h2>
-      <p class="muted">Tüm ürünlerimiz sabit fiyat: <strong style="color:var(--price);">299 TL</strong></p>
-      <div style="height:12px"></div>
+      <p class="muted">Fotoğraflar için repo’ya <b>images/</b> klasörüne yükleyip aynı isimleri kullan.</p>
 
-      <div class="products">
+      <div class="products" id="productGrid"></div>
 
-        <div class="product">
-          <span class="badge">Krem</span>
-          <h3>DSU Urea 40% Repair Cream</h3>
-          <p>Çok kuru ve çatlamaya meyilli ciltler için yoğun nem ve onarım desteği.</p>
-          <ul>
-            <li>%40 Üre içeriği</li>
-            <li>Pürüzlü ve sertleşmiş cilt görünümünü yumuşatmaya yardımcı</li>
-            <li>El, ayak, dirsek ve topuk kullanımı için uygun</li>
-          </ul>
-          <div class="price"><span class="tag">299 TL</span></div>
-          <a class="btn primary" style="margin-top:10px; width:100%; justify-content:center;"
-             href="https://wa.me/905414748772?text=Merhaba,%20DSU%20Urea%2040%25%20Repair%20Cream%20sipariş%20vermek%20istiyorum."
-             target="_blank" rel="noopener">
-            WhatsApp’tan Sipariş Ver
-          </a>
-        </div>
-
-        <div class="product">
-          <span class="badge">Krem</span>
-          <h3>DSU Urea 40% + Salicylic Cream</h3>
-          <p>Pürüzlü cilt görünümünü azaltmaya yardımcı, yenileyici bakım kremi.</p>
-          <ul>
-            <li>%40 Üre + %2 Salisilik Asit</li>
-            <li>Ölü deri görünümünü azaltmaya yardımcı</li>
-            <li>Yoğun nem ve yumuşaklık hissi</li>
-          </ul>
-          <div class="price"><span class="tag">299 TL</span></div>
-          <a class="btn primary" style="margin-top:10px; width:100%; justify-content:center;"
-             href="https://wa.me/905414748772?text=Merhaba,%20DSU%20Urea%2040%25%20Salicylic%20Cream%20sipariş%20vermek%20istiyorum."
-             target="_blank" rel="noopener">
-            WhatsApp’tan Sipariş Ver
-          </a>
-        </div>
-
-        <div class="product">
-          <span class="badge">Serum</span>
-          <h3>DSU Retinol Serum</h3>
-          <p>Cilt görünümünü pürüzsüzleştirmeye yardımcı gece rutin serumu.</p>
-          <ul>
-            <li>Retinol destekli formül</li>
-            <li>Daha canlı ve sıkı görünüm hedefi</li>
-            <li>Gece kullanımına uygun yaklaşım</li>
-          </ul>
-          <div class="price"><span class="tag">299 TL</span></div>
-          <a class="btn primary" style="margin-top:10px; width:100%; justify-content:center;"
-             href="https://wa.me/905414748772?text=Merhaba,%20DSU%20Retinol%20Serum%20sipariş%20vermek%20istiyorum."
-             target="_blank" rel="noopener">
-            WhatsApp’tan Sipariş Ver
-          </a>
-        </div>
-
-        <div class="product">
-          <span class="badge">Serum</span>
-          <h3>DSU Vitamin C Brightening Serum</h3>
-          <p>Daha aydınlık ve canlı bir cilt görünümü için günlük kullanım serumu.</p>
-          <ul>
-            <li>Vitamin C destekli içerik</li>
-            <li>Cilt tonunu eşitlemeye yardımcı</li>
-            <li>Aloe vera ile yatıştırıcı destek</li>
-          </ul>
-          <div class="price"><span class="tag">299 TL</span></div>
-          <a class="btn primary" style="margin-top:10px; width:100%; justify-content:center;"
-             href="https://wa.me/905414748772?text=Merhaba,%20DSU%20Vitamin%20C%20Brightening%20Serum%20sipariş%20vermek%20istiyorum."
-             target="_blank" rel="noopener">
-            WhatsApp’tan Sipariş Ver
-          </a>
-        </div>
-
-        <div class="product">
-          <span class="badge">Serum</span>
-          <h3>DSU AHA 30% + BHA 2% Peeling Serum</h3>
-          <p>Cilt yüzeyini yenilemeye yardımcı yoğun peeling bakım serumu.</p>
-          <ul>
-            <li>AHA 30% + BHA 2% kombinasyonu</li>
-            <li>Arındırma ve pürüzsüzlük hissi</li>
-            <li>Haftalık bakım rutinine uygun</li>
-          </ul>
-          <div class="price"><span class="tag">299 TL</span></div>
-          <a class="btn primary" style="margin-top:10px; width:100%; justify-content:center;"
-             href="https://wa.me/905414748772?text=Merhaba,%20DSU%20AHA%2030%25%20BHA%202%25%20Peeling%20Serum%20sipariş%20vermek%20istiyorum."
-             target="_blank" rel="noopener">
-            WhatsApp’tan Sipariş Ver
-          </a>
-        </div>
-
+      <div class="note" style="margin-top:14px;">
+        Not: “Değerlendirme/Yorumlar” bu sayfada <b>örnek/demo</b> amaçlı gösterimdir. Gerçek müşteri yorumu değildir.
       </div>
-    </section>
-
-    <section class="grid3">
-      <div class="card feature">
-        <b>Marka vaadi</b>
-        <div class="muted">Sade rutin, güçlü sonuç. DSU, gereksiz karmaşayı azaltır.</div>
-      </div>
-      <div class="card feature">
-        <b>Kimlik</b>
-        <div class="muted">Turkuaz tonlar, modern ve güven veren bir görünüm.</div>
-      </div>
-      <div class="card feature">
-        <b>Deneyim</b>
-        <div class="muted">WhatsApp üzerinden hızlı destek ve sipariş.</div>
-      </div>
-    </section>
-
-    <section id="hakkinda" class="card pad">
-      <h2>DSU Hakkında</h2>
-      <p class="muted">
-        DSU Cosmetics; modern, sade ve güvenilir kozmetik ürünleri sunmak için yola çıktı.
-        Buraya marka hikayeni (kuruluş yılı, vizyon, üretim yeri) ekleyebilirsin.
-      </p>
     </section>
 
     <section id="iletisim" class="card pad">
       <h2>İletişim</h2>
-      <p class="muted">Bize aşağıdaki kanallardan ulaşabilirsiniz.</p>
-
-      <div class="contact">
-        <a class="btn primary" href="https://wa.me/905414748772?text=Merhaba,%20DSU%20ürünleri%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
-          WhatsApp’tan Yaz
-        </a>
+      <p class="muted">WhatsApp, telefon ve e-posta ile ulaşabilirsin.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/905414748772?text=Merhaba,%20DSU%20ürünleri%20hakkında%20bilgi%20almak%20istiyorum.">WhatsApp</a>
         <a class="btn" href="tel:+905414748772">Telefon</a>
         <a class="btn" href="mailto:muhammetgulay1310@gmail.com">E-posta</a>
       </div>
-
-      <div style="height:14px"></div>
-
-      <div class="card" style="padding:16px; border-radius:18px; background: rgba(255,255,255,.04);">
-        <div style="display:grid; gap:6px;">
-          <div><strong>WhatsApp / Telefon:</strong> +90 541 474 8772</div>
-          <div><strong>E-posta:</strong> muhammetgulay1310@gmail.com</div>
-        </div>
+      <div class="note" style="margin-top:12px;">
+        WhatsApp / Telefon: <b>+90 541 474 8772</b><br/>
+        E-posta: <b>muhammetgulay1310@gmail.com</b>
       </div>
     </section>
 
-    <div class="card foot">
-      <div>© <span id="y"></span> DSU Cosmetics. Tüm hakları saklıdır.</div>
-      <div class="small">GitHub Pages üzerinde ücretsiz yayınlanmaktadır.</div>
+    <div class="footer">
+      <div>© <span id="y"></span> DSU Cosmetics</div>
+      <div>GitHub Pages üzerinde ücretsiz yayın</div>
+    </div>
+
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="drawerBack" id="drawerBack" onclick="closeCart()"></div>
+  <div class="drawer" id="drawer">
+    <div class="dhead">
+      <div class="dtitle">🛒 Sepet</div>
+      <button class="dclose" onclick="closeCart()">Kapat</button>
+    </div>
+    <div class="dbody" id="cartItems"></div>
+    <div class="footBar">
+      <div class="sumRow">
+        <div>Toplam</div>
+        <div><small id="cartCount">0 ürün</small> • <span id="cartTotal">0 TL</span></div>
+      </div>
+      <button class="btn primary full" onclick="openCheckout()">Satın Al</button>
+      <button class="btn full" onclick="clearCart()">Sepeti Boşalt</button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modalBack" id="modalBack">
+    <div class="modal">
+      <div class="mhead">
+        <div style="font-weight:950;">Satın Al • Ödeme Adımı (Demo)</div>
+        <button class="dclose" onclick="closeCheckout()">Kapat</button>
+      </div>
+      <div class="mbody">
+        <div class="grid2">
+          <div>
+            <label>Ad Soyad</label>
+            <input id="cName" placeholder="Örn: Muhammet Gülay" />
+          </div>
+          <div>
+            <label>Telefon</label>
+            <input id="cPhone" placeholder="Örn: 0541 474 8772" />
+          </div>
+          <div class="grid2" style="grid-column:1/-1;">
+            <div>
+              <label>Şehir</label>
+              <input id="cCity" placeholder="Örn: İstanbul" />
+            </div>
+            <div>
+              <label>İlçe</label>
+              <input id="cTown" placeholder="Örn: Kadıköy" />
+            </div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label>Adres</label>
+            <textarea id="cAddr" placeholder="Açık adres"></textarea>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label>Ödeme Yöntemi (Demo)</label>
+            <select id="payMethod">
+              <option value="Kapıda Ödeme (Demo)">Kapıda Ödeme (Demo)</option>
+              <option value="Havale/EFT (Demo)">Havale/EFT (Demo)</option>
+              <option value="Kart (Demo)">Kart (Demo)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="note">
+          Bu sayfa GitHub Pages üzerinde çalıştığı için gerçek kart tahsilatı yapılmaz.
+          “Ödemeyi Tamamla” butonu sipariş özetini WhatsApp’a gönderir.
+        </div>
+
+        <div class="sumRow" style="margin-top:12px;">
+          <div style="font-weight:950;">Sipariş Toplamı</div>
+          <div style="font-weight:950;"><span id="checkoutTotal">0 TL</span></div>
+        </div>
+      </div>
+
+      <div class="mfoot">
+        <button class="btn" onclick="closeCheckout()">Geri</button>
+        <button class="btn primary" onclick="sendOrderWhatsapp()">Ödemeyi Tamamla</button>
+      </div>
     </div>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const PRICE = 299;
+    const WHATSAPP = "905414748772";
+
+    // Ürünler (foto path'leri senin repo'daki images klasörüne göre)
+    const products = [
+      {
+        id:"urea-repair",
+        cat:"Krem",
+        name:"DSU Urea 40% Repair Cream",
+        img:"images/urea-repair.png",
+        desc:"Çok kuru ve çatlamaya meyilli ciltler için yoğun nem ve onarım desteği.",
+        feats:["%40 üre içerir","Pürüzlü görünümü yumuşatmaya yardımcı","El/ayak/dirsek/topuk için uygun"]
+      },
+      {
+        id:"urea-sa",
+        cat:"Krem",
+        name:"DSU Urea 40% + Salicylic Cream",
+        img:"images/urea-sa.png",
+        desc:"Pürüzlü cilt görünümünü azaltmaya yardımcı, yenileyici bakım kremi.",
+        feats:["%40 üre + %2 salisilik asit","Ölü deri görünümünü azaltmaya yardımcı","Yoğun nem ve yumuşaklık hissi"]
+      },
+      {
+        id:"retinol",
+        cat:"Serum",
+        name:"DSU Retinol Serum",
+        img:"images/retinol.png",
+        desc:"Gece rutininde cilt görünümünü pürüzsüzleştirmeye yardımcı bakım serumu.",
+        feats:["Retinol destekli formül","Daha canlı görünüm hedefi","Gece rutinine uygun"]
+      },
+      {
+        id:"vitc",
+        cat:"Serum",
+        name:"DSU Vitamin C Brightening Serum",
+        img:"images/vitc.png",
+        desc:"Daha aydınlık ve canlı bir cilt görünümü için günlük serum.",
+        feats:["Vitamin C destekli içerik","Cilt tonunu eşitlemeye yardımcı","Günlük kullanım odaklı"]
+      },
+      {
+        id:"aha-bha",
+        cat:"Serum",
+        name:"DSU AHA 30% + BHA 2% Peeling Serum",
+        img:"images/aha-bha.png",
+        desc:"Cilt yüzeyini yenilemeye yardımcı yoğun peeling bakım serumu.",
+        feats:["AHA 30% + BHA 2%","Arındırma ve pürüzsüzlük hissi","Haftalık bakım rutinine uygun"]
+      }
+    ];
+
+    // Sepet (id -> qty)
+    const cart = new Map();
+
+    function money(n){ return `${n} TL`; }
+
+    function cartTotals(){
+      let count = 0, total = 0;
+      for (const [id, qty] of cart.entries()){
+        count += qty;
+        total += qty * PRICE;
+      }
+      return {count, total};
+    }
+
+    function updateCartPill(){
+      const {count, total} = cartTotals();
+      document.getElementById("cartPill").textContent = `Sepet: ${count} ürün • ${money(total)}`;
+      document.getElementById("cartCount").textContent = `${count} ürün`;
+      document.getElementById("cartTotal").textContent = money(total);
+      document.getElementById("checkoutTotal").textContent = money(total);
+    }
+
+    function openCart(){
+      document.getElementById("drawerBack").classList.add("show");
+      document.getElementById("drawer").classList.add("open");
+      renderCart();
+    }
+    function closeCart(){
+      document.getElementById("drawerBack").classList.remove("show");
+      document.getElementById("drawer").classList.remove("open");
+    }
+
+    function addToCart(id){
+      cart.set(id, (cart.get(id) || 0) + 1);
+      updateCartPill();
+      renderCart();
+      openCart();
+    }
+    function dec(id){
+      const q = cart.get(id) || 0;
+      if (q <= 1) cart.delete(id);
+      else cart.set(id, q - 1);
+      updateCartPill();
+      renderCart();
+    }
+    function inc(id){
+      cart.set(id, (cart.get(id) || 0) + 1);
+      updateCartPill();
+      renderCart();
+    }
+    function clearCart(){
+      cart.clear();
+      updateCartPill();
+      renderCart();
+    }
+
+    function renderCart(){
+      const el = document.getElementById("cartItems");
+      el.innerHTML = "";
+
+      if (cart.size === 0){
+        el.innerHTML = `<div class="note">Sepet boş. Ürünlerden “Sepete Ekle” seç.</div>`;
+        return;
+      }
+
+      for (const [id, qty] of cart.entries()){
+        const p = products.find(x => x.id === id);
+        const item = document.createElement("div");
+        item.className = "item";
+        item.innerHTML = `
+          <div>
+            <b>${p.name}</b>
+            <span>${p.cat} • ${money(PRICE)} / adet</span>
+          </div>
+          <div class="qtyRow">
+            <button class="qbtn" onclick="dec('${id}')">-</button>
+            <div style="min-width:22px; text-align:center; font-weight:950;">${qty}</div>
+            <button class="qbtn" onclick="inc('${id}')">+</button>
+          </div>
+        `;
+        el.appendChild(item);
+      }
+      updateCartPill();
+    }
+
+    function openCheckout(){
+      const {count} = cartTotals();
+      if (count === 0){
+        openCart();
+        return;
+      }
+      document.getElementById("modalBack").style.display = "flex";
+    }
+    function closeCheckout(){
+      document.getElementById("modalBack").style.display = "none";
+    }
+
+    function sendOrderWhatsapp(){
+      const {count, total} = cartTotals();
+      if (count === 0) return;
+
+      const name = document.getElementById("cName").value.trim() || "-";
+      const phone = document.getElementById("cPhone").value.trim() || "-";
+      const city = document.getElementById("cCity").value.trim() || "-";
+      const town = document.getElementById("cTown").value.trim() || "-";
+      const addr = document.getElementById("cAddr").value.trim() || "-";
+      const pay = document.getElementById("payMethod").value;
+
+      let lines = [];
+      lines.push("Merhaba, DSU siparişi vermek istiyorum.");
+      lines.push("");
+      lines.push("🧾 Sipariş:");
+      for (const [id, qty] of cart.entries()){
+        const p = products.find(x => x.id === id);
+        lines.push(`- ${p.name} x${qty} = ${money(qty*PRICE)}`);
+      }
+      lines.push(``);
+      lines.push(`💳 Ödeme Yöntemi: ${pay}`);
+      lines.push(`💰 Toplam: ${money(total)}`);
+      lines.push("");
+      lines.push("👤 Müşteri Bilgisi:");
+      lines.push(`Ad Soyad: ${name}`);
+      lines.push(`Telefon: ${phone}`);
+      lines.push(`Şehir/İlçe: ${city} / ${town}`);
+      lines.push(`Adres: ${addr}`);
+
+      const msg = encodeURIComponent(lines.join("\n"));
+      window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener");
+    }
+
+    // --- Reviews (25 örnek yorum / ürün) ---
+    const names = ["Ayşe", "Elif", "Zeynep", "Merve", "Seda", "Kübra", "Derya", "Ece", "Büşra", "Melis", "İrem", "Sude", "Betül", "Esra", "Gizem"];
+    const comments = [
+      "Dokusu çok güzel, hızlı emiliyor.",
+      "Kokusuz olması hoşuma gitti.",
+      "Düzenli kullanımda farkı gördüm.",
+      "Paketleme özenliydi.",
+      "Cildimde daha yumuşak bir his bıraktı.",
+      "Fiyat/performans iyi.",
+      "Hassas cildimde rahatsız etmedi.",
+      "Rutinime kolayca ekledim.",
+      "Nem hissi uzun sürüyor.",
+      "İlk kullanımdan itibaren konforlu.",
+      "Cilt görünümüm daha canlı duruyor.",
+      "Yoğun ama ağır hissettirmiyor.",
+      "Kısa sürede toparladı gibi.",
+      "Tekrar almayı düşünürüm.",
+      "Genel olarak memnunum.",
+      "Beklediğimden iyi çıktı.",
+      "Ürün açıklamasıyla uyumlu.",
+      "Sürümü rahat, yapış yapış değil.",
+      "Daha pürüzsüz bir his verdi.",
+      "Gece kullanımında sabah daha iyi hissediyorum.",
+      "Hediye için de uygun.",
+      "Günlük kullanım için ideal.",
+      "Cilt bariyeri için iyi destek.",
+      "İçerik yaklaşımı hoşuma gitti.",
+      "Tek kelimeyle başarılı.",
+      "Kargo hızlıydı.",
+      "Daha dengeli bir görünüm verdi.",
+      "Düzenli kullanınca etkisi artıyor.",
+      "Çok beğendim.",
+      "Yeni favorim oldu."
+    ];
+
+    function pseudoRand(seed){
+      // basit deterministic random
+      let x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    }
+
+    function makeReviews(productId){
+      // 25 adet örnek
+      let out = "";
+      const base = productId.split("").reduce((a,c)=>a+c.charCodeAt(0), 0);
+
+      for (let i=1; i<=25; i++){
+        const r1 = pseudoRand(base + i);
+        const r2 = pseudoRand(base + i*7);
+        const r3 = pseudoRand(base + i*13);
+
+        const nm = names[Math.floor(r1*names.length)];
+        const cm = comments[Math.floor(r2*comments.length)];
+
+        // 3-5 arası ağırlıklı
+        const rating = 3 + Math.floor(r3*3); // 3,4,5
+        const stars = "★".repeat(rating) + "☆".repeat(5-rating);
+
+        out += `
+          <div class="rev">
+            <div class="revTop">
+              <div class="revName">${nm}</div>
+              <div class="revMeta"><span style="color:var(--accent2); font-weight:950;">${stars}</span> • Örnek yorum</div>
+            </div>
+            <p class="revText">${cm}</p>
+          </div>
+        `;
+      }
+      return out;
+    }
+
+    function avgRatingFor(productId){
+      // basit sabit ortalama (gösterim amaçlı)
+      const base = productId.split("").reduce((a,c)=>a+c.charCodeAt(0), 0);
+      const r = 4.2 + (pseudoRand(base)*0.6 - 0.3); // 3.9 - 4.5
+      return Math.max(3.9, Math.min(4.7, r));
+    }
+
+    function renderProducts(){
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = "";
+
+      products.forEach(p => {
+        const avg = avgRatingFor(p.id);
+        const starCount = Math.round(avg);
+        const stars = "★".repeat(starCount) + "☆".repeat(5-starCount);
+
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+          <span class="badge">${p.cat}</span>
+
+          <img class="pimg" src="${p.img}" alt="${p.name}"
+               onerror="this.style.display='none'; this.insertAdjacentHTML('afterend','<div style=&quot;border:1px solid var(--line); border-radius:16px; padding:14px; background:#f7faf8; color:var(--muted); font-weight:900;&quot;>Görsel bulunamadı. Repo’ya <b>${p.img}</b> yükle.</div>');" />
+
+          <h3 class="ptitle">${p.name}</h3>
+          <p class="pdesc">${p.desc}</p>
+
+          <ul class="features">
+            ${p.feats.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+
+          <div class="priceRow">
+            <div class="priceTag">299 TL</div>
+            <div class="rating">
+              <span class="stars">${stars}</span>
+              <span>${avg.toFixed(1)} / 5</span>
+            </div>
+          </div>
+
+          <div class="pbtns">
+            <button class="btn primary full" onclick="addToCart('${p.id}')">Sepete Ekle</button>
+            <button class="btn linkLike full" onclick="openCart()">Sepete Git</button>
+          </div>
+
+          <details>
+            <summary>Yorumlar (25) • Örnek</summary>
+            <div class="reviews">
+              ${makeReviews(p.id)}
+            </div>
+          </details>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // init
+    renderProducts();
+    updateCartPill();
   </script>
 </body>
 </html>
