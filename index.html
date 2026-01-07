@@ -21,6 +21,9 @@
       --radius:18px;
       --radius2:28px;
       --max:1100px;
+
+      /* fiyat rengi (gri) */
+      --price:#98a7aa;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -161,13 +164,8 @@
       background: rgba(255,255,255,.04);
     }
     .feature b{display:block; margin-bottom:6px}
-    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
-    .tag{
-      font-size:12px; font-weight:700; color:rgba(255,255,255,.90);
-      padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
+
+    /* ürünler */
     .products{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
     .product{
       padding:18px; border-radius: var(--radius2);
@@ -181,11 +179,29 @@
       font-size:12px; font-weight:800;
       color:rgba(255,255,255,.92);
     }
-    .product h3{margin:10px 0 6px; font-size:16px}
-    .product p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
-    .contact{
-      display:flex; gap:12px; flex-wrap:wrap; margin-top:14px
+    .product h3{margin:10px 0 8px; font-size:16px}
+    .product p{margin:0 0 10px; color:var(--muted); font-size:13px; line-height:1.6}
+    .product ul{margin:0 0 12px 18px; padding:0; color:var(--muted); font-size:13px; line-height:1.6}
+    .price{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:900;
+      color:var(--price);
+      letter-spacing:.2px;
+      margin-top:2px;
     }
+    .price .tag{
+      font-size:12px;
+      font-weight:800;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--price);
+    }
+
+    .contact{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
     .foot{
       margin-top:18px;
       padding:16px 18px;
@@ -231,8 +247,8 @@
         <div class="kicker"><span class="dot"></span> Serum • Takviye • Krem — modern DSU bakımı</div>
         <h1><span class="grad">DSU Cosmetics</span><br/>Turkuaz dokunuşla temiz güzellik.</h1>
         <p class="sub">
-          DSU; serum, takviye (supplement) ve krem kategorilerinde modern, sade ve güvenilir ürünler sunar.
-          Amacımız: günlük rutini kolaylaştıran, premium bir bakım deneyimi.
+          DSU; serum ve krem kategorilerinde modern, sade ve güvenilir ürünler sunar.
+          Premium bir bakım deneyimi hedefler.
         </p>
 
         <div class="cta">
@@ -252,53 +268,98 @@
           <div>
             <h3>DSU Serileri</h3>
             <p>
-              Ürün koleksiyonları “Serum”, “Takviye” ve “Krem” olarak sade biçimde sunulur.
-              Ürün detaylarını eklediğinde sayfa daha da güçlü görünecek.
+              Ürün koleksiyonları; “Onarım & Nem”, “Aydınlatma”, “Yenileyici” gibi ihtiyaçlara göre tasarlanır.
             </p>
             <div class="statgrid">
-              <div class="stat"><b>Serum</b><span>Hedefe yönelik bakım</span></div>
-              <div class="stat"><b>Takviye</b><span>İçten destek yaklaşımı</span></div>
-              <div class="stat"><b>Krem</b><span>Nem & bariyer</span></div>
-              <div class="stat"><b>DSU</b><span>Modern turkuaz kimlik</span></div>
+              <div class="stat"><b>Nem</b><span>Yoğun destek</span></div>
+              <div class="stat"><b>Onarım</b><span>Bariyer odağı</span></div>
+              <div class="stat"><b>Aydınlık</b><span>Canlı görünüm</span></div>
+              <div class="stat"><b>Peeling</b><span>Arındırma</span></div>
             </div>
           </div>
-          <div class="tags">
-            <span class="tag">Kozmetik</span>
-            <span class="tag">Cilt Bakımı</span>
-            <span class="tag">Turkuaz</span>
+          <div class="tags" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+            <span class="pill">Kozmetik</span>
+            <span class="pill">Cilt Bakımı</span>
+            <span class="pill">Turkuaz</span>
           </div>
         </div>
       </div>
     </div>
 
     <section id="urunler" class="card pad">
-      <h2>Ürün Kategorileri</h2>
-      <p class="muted">Bu alanı gerçek ürün isimlerin ve kısa açıklamalarınla doldurabiliriz.</p>
+      <h2>Ürünler</h2>
+      <p class="muted">Tüm ürünlerimiz sabit fiyat: <strong style="color:var(--price);">299 TL</strong></p>
       <div style="height:12px"></div>
 
       <div class="products">
-        <div class="product">
-          <span class="badge">Serum</span>
-          <h3>DSU Serum Serisi</h3>
-          <p>Hedefe yönelik içeriklerle günlük rutinde pratik kullanım.</p>
-        </div>
-        <div class="product">
-          <span class="badge">Takviye (Supplement)</span>
-          <h3>DSU Supplement Serisi</h3>
-          <p>İçten destek yaklaşımıyla tamamlayıcı bakım kategorisi.</p>
-        </div>
+
         <div class="product">
           <span class="badge">Krem</span>
-          <h3>DSU Krem Serisi</h3>
-          <p>Nem, bariyer ve konfor odaklı formül yaklaşımı.</p>
+          <h3>DSU Urea 40% Repair Cream</h3>
+          <p>Çok kuru ve çatlamaya meyilli ciltler için yoğun nem ve onarım desteği.</p>
+          <ul>
+            <li>%40 Üre içeriği</li>
+            <li>Pürüzlü ve sertleşmiş cilt görünümünü yumuşatmaya yardımcı</li>
+            <li>El, ayak, dirsek ve topuk kullanımı için uygun</li>
+          </ul>
+          <div class="price"><span class="tag">299 TL</span></div>
         </div>
+
+        <div class="product">
+          <span class="badge">Krem</span>
+          <h3>DSU Urea 40% + Salicylic Cream</h3>
+          <p>Pürüzlü cilt görünümünü azaltmaya yardımcı, yenileyici bakım kremi.</p>
+          <ul>
+            <li>%40 Üre + %2 Salisilik Asit</li>
+            <li>Ölü deri görünümünü azaltmaya yardımcı</li>
+            <li>Yoğun nem ve yumuşaklık hissi</li>
+          </ul>
+          <div class="price"><span class="tag">299 TL</span></div>
+        </div>
+
+        <div class="product">
+          <span class="badge">Serum</span>
+          <h3>DSU Retinol Serum</h3>
+          <p>Cilt görünümünü pürüzsüzleştirmeye yardımcı gece rutin serumu.</p>
+          <ul>
+            <li>Retinol destekli formül</li>
+            <li>Daha sıkı ve canlı görünüm hedefi</li>
+            <li>Gece kullanımına uygun yaklaşım</li>
+          </ul>
+          <div class="price"><span class="tag">299 TL</span></div>
+        </div>
+
+        <div class="product">
+          <span class="badge">Serum</span>
+          <h3>DSU Vitamin C Brightening Serum</h3>
+          <p>Daha aydınlık ve canlı bir cilt görünümü için günlük kullanım serumu.</p>
+          <ul>
+            <li>Vitamin C destekli içerik</li>
+            <li>Cilt tonunu eşitlemeye yardımcı</li>
+            <li>Aloe vera ile yatıştırıcı destek</li>
+          </ul>
+          <div class="price"><span class="tag">299 TL</span></div>
+        </div>
+
+        <div class="product">
+          <span class="badge">Serum</span>
+          <h3>DSU AHA 30% + BHA 2% Peeling Serum</h3>
+          <p>Cilt yüzeyini yenilemeye yardımcı yoğun peeling bakım serumu.</p>
+          <ul>
+            <li>AHA 30% + BHA 2% kombinasyonu</li>
+            <li>Arındırma ve pürüzsüzlük hissi</li>
+            <li>Haftalık bakım rutinine uygun</li>
+          </ul>
+          <div class="price"><span class="tag">299 TL</span></div>
+        </div>
+
       </div>
     </section>
 
     <section class="grid3">
       <div class="card feature">
         <b>Marka vaadi</b>
-        <div class="muted">Sade rutin, güçlü sonuç. DSU, karmaşayı azaltır.</div>
+        <div class="muted">Sade rutin, güçlü sonuç. DSU, gereksiz karmaşayı azaltır.</div>
       </div>
       <div class="card feature">
         <b>Kimlik</b>
@@ -313,14 +374,9 @@
     <section id="hakkinda" class="card pad">
       <h2>DSU Hakkında</h2>
       <p class="muted">
-        DSU Cosmetics, serum, takviye ve krem kategorilerinde modern bir bakım deneyimi sunmak için yola çıktı.
+        DSU Cosmetics; modern, sade ve güvenilir kozmetik ürünleri sunmak için yola çıktı.
         Buraya marka hikayeni (kuruluş yılı, vizyon, üretim yeri) ekleyebiliriz.
       </p>
-      <div class="tags">
-        <span class="tag">Modern</span>
-        <span class="tag">Premium</span>
-        <span class="tag">Şeffaf</span>
-      </div>
     </section>
 
     <section id="iletisim" class="card pad">
